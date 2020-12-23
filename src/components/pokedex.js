@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
   CardSubtitle,
+  Alert,
   Button,
   Container,
   Row,
@@ -17,28 +18,25 @@ import {
 import axios from "axios";
 
 function Pokedex({ props, pokemon }) {
+  const renderAbilities = (arr, index) => {
+    let abilities = arr.map((item) => {
+      return item.ability.name;
+    });
+
+    return abilities.join(", ");
+  };
   console.log("Pokedex prop: ", pokemon);
   return (
     <div>
       <Container>
-        <Row className="d-flex flex-wrap">
-          {pokemon.map((item) => {
+        <Row className="d-flex justify-content-between flex-wrap">
+          {pokemon.map((item, index) => {
             return (
-              <div className="d-flex flex-wrap">
+              <div key={index}>
                 <Col>
-                  <Card
-                    style={{
-                      margin: "10px",
-                      height: "35rem",
-                      width: "20rem",
-                      boxShadow: "1px 1px 2px gray",
-                      border: "none",
-                    }}
-                  >
+                  <Card style={cardStyle}>
                     <CardBody>
-                      <CardHeader className="text-capitalize">
-                        {item.name}
-                      </CardHeader>
+                      <Alert color="info text-capitalize">{item.name}</Alert>
                     </CardBody>
                     <img
                       width="80%"
@@ -50,16 +48,44 @@ function Pokedex({ props, pokemon }) {
                         margin: "auto",
                       }}
                     />
-                    <CardBody>
-                      <CardText>Weight: {item.weight}</CardText>
-                      <CardText>Height: {item.height}</CardText>
+                    <CardBody
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                        className="blockquote "
+                      >
+                        <p>
+                          <strong>Weight: </strong>
+                          {item.weight}
+                        </p>
+                        <p>
+                          <strong>Height: </strong>
+                          {item.height}
+                        </p>
+                      </div>
+
+                      <div className="blockquote ">
+                        <p className="text-capitalize">
+                          <strong>Abilities: </strong>
+                          {renderAbilities(item.abilities)}
+                        </p>
+                      </div>
+
                       <div
                         style={{
                           display: "flex",
                           justifyContent: "space-between",
                         }}
                       >
-                        <Button color="primary" size="sm" outline>
+                        <Button color="info mb-10" size="sm" outline>
                           Details
                         </Button>
                         <Button color="success" size="sm">
@@ -77,5 +103,17 @@ function Pokedex({ props, pokemon }) {
     </div>
   );
 }
+
+const cardStyle = {
+  margin: "10px",
+  height: "35rem",
+  width: "20rem",
+  boxShadow: "1px 1px 2px gray",
+  border: "none",
+  cursor: "pointer",
+  ":hover": {
+    color: "black",
+  },
+};
 
 export default Pokedex;
