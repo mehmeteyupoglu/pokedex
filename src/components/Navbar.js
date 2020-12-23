@@ -4,6 +4,7 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
+  Button,
   Nav,
   NavItem,
   NavLink,
@@ -25,19 +26,16 @@ export default function CustomNavbar({ props }) {
             <img src="https://img.icons8.com/color/48/000000/camera-pokemon.png" />{" "}
             Pokédex
           </NavbarBrand>
-          <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-          <Collapse isOpen={!collapsed} navbar>
-            <Nav navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">
-                  GitHub
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
+          <Nav navbar>
+            <div style={{ marginRight: "0.5rem" }}>
+              <Button size="sm" style={{ marginRight: "1.5rem" }} outline>
+                <NavLink href="/caught-pokemons/">See Caught Items</NavLink>
+              </Button>
+              <Button size="sm" outline>
+                <NavLink href="/caught-pokemons/">Dark</NavLink>
+              </Button>
+            </div>
+          </Nav>
         </div>
       </Navbar>
     </div>
