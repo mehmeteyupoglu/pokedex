@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Spinner, Row, Col } from "reactstrap";
-import Pokedex from "./components/pokedex";
+import { Spinner, Container } from "reactstrap";
+import Pokedex from "./components/Pokedex";
+import Navbar from "./components/Navbar";
 import "./App.css";
 import {
   getAllPokemon,
@@ -16,11 +17,15 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      let response = await getAllPokemon(initialUrl);
-      console.log(response);
-      let pokemon = await loadPokemon(response.results);
-      console.log(pokemon);
-      setLoading(false);
+      try {
+        let response = await getAllPokemon(initialUrl);
+        console.log(response);
+        let pokemon = await loadPokemon(response.results);
+        console.log(pokemon);
+        setLoading(false);
+      } catch (error) {
+        console.log("error", error);
+      }
     }
     fetchData();
   }, []);
@@ -41,13 +46,18 @@ function App() {
         <div className="d-flex align-items-center">
           <Spinner
             type="grow"
-            color="secondary"
+            color="info"
             style={{ width: "10rem", height: "10rem" }}
             className="align-self-center"
           />
         </div>
       ) : (
-        <Pokedex pokemon={pokemonData} />
+        <div>
+          <Navbar />
+          <div className="mt-10">
+            <Pokedex pokemon={pokemonData} />
+          </div>
+        </div>
       )}
     </div>
   );
