@@ -11,9 +11,8 @@ import {
 } from "reactstrap";
 
 export default function CustomNavbar({ props }) {
-  const [collapsed, setCollapsed] = useState(true);
+  const [dark, setDark] = useState(false);
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
   return (
     <div>
       <Navbar
@@ -31,8 +30,8 @@ export default function CustomNavbar({ props }) {
               <Button size="sm" style={{ marginRight: "1.5rem" }} outline>
                 <NavLink href="/caught-pokemons/">See Caught Items</NavLink>
               </Button>
-              <Button size="sm" outline>
-                <NavLink href="/caught-pokemons/">Dark</NavLink>
+              <Button size="sm" outline onClick={() => setDark(!dark)}>
+                <NavLink>{dark ? "Dark" : "Light"}</NavLink>
               </Button>
             </div>
           </Nav>

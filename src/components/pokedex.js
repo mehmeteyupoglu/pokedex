@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Card,
   CardImg,
@@ -15,9 +16,12 @@ import {
   Spinner,
 } from "reactstrap";
 
-import axios from "axios";
+import poke from "../assets/pokemon.png";
 
 function Pokedex({ props, pokemon }) {
+  const pokemons = useSelector((state) => state.pokemonReducer);
+  const dispatch = useDispatch();
+
   const renderAbilities = (arr, index) => {
     let abilities = arr.map((item) => {
       return item.ability.name;
@@ -25,7 +29,7 @@ function Pokedex({ props, pokemon }) {
 
     return abilities.join(", ");
   };
-  console.log("Pokedex prop: ", pokemon);
+  console.log("Pokemon store: ", pokemons);
   return (
     <div>
       <Container>
@@ -35,17 +39,33 @@ function Pokedex({ props, pokemon }) {
               <div key={index}>
                 <Col>
                   <Card style={cardStyle}>
+                    <CardBody
+                      style={{
+                        display: "flex",
+
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <Alert color="info ">
+                        <img width="30%" src={poke} alt={item.name} />
+                      </Alert>
+                    </CardBody>
                     <CardBody>
-                      <Alert color="info text-capitalize">{item.name}</Alert>
+                      <CardSubtitle
+                        tag="h6"
+                        className="mb-2 text-muted text-capitalize"
+                      >
+                        {item.name}
+                      </CardSubtitle>
                     </CardBody>
                     <img
-                      width="80%"
+                      width="60%"
                       src={item.sprites.front_default}
                       alt={`Pokemon: ${item.name}`}
                       className="rounded"
                       style={{
-                        border: "1px solid rgb(0 0 0 / 13%)",
                         margin: "auto",
+                        border: "1px solid rgb(0 0 0 / 13%)",
                       }}
                     />
                     <CardBody
@@ -54,11 +74,13 @@ function Pokedex({ props, pokemon }) {
                         flexDirection: "column",
                         justifyContent: "space-between",
                       }}
+                      tag="h6"
                     >
                       <div
                         style={{
                           display: "flex",
-                          justifyContent: "space-between",
+                          flexDirection: "column",
+                          fontSize: "1em",
                         }}
                         className="blockquote "
                       >
@@ -70,9 +92,6 @@ function Pokedex({ props, pokemon }) {
                           <strong>Height: </strong>
                           {item.height}
                         </p>
-                      </div>
-
-                      <div className="blockquote ">
                         <p className="text-capitalize">
                           <strong>Abilities: </strong>
                           {renderAbilities(item.abilities)}
@@ -85,10 +104,29 @@ function Pokedex({ props, pokemon }) {
                           justifyContent: "space-between",
                         }}
                       >
-                        <Button color="info mb-10" size="sm" outline>
-                          Details
+                        <Button
+                          color="danger mb-10"
+                          size="sm"
+                          outline
+                          onClick={() =>
+                            dispatch({
+                              type: "RELEASE_POKEMON",
+                              payload: item.id,
+                            })
+                          }
+                        >
+                          Pokédex
                         </Button>
-                        <Button color="success" size="sm">
+                        <Button
+                          color="success"
+                          size="sm"
+                          onClick={() =>
+                            dispatch({
+                              type: "CATCH_POKEMON",
+                              payload: item,
+                            })
+                          }
+                        >
                           Catch
                         </Button>
                       </div>
@@ -111,8 +149,8 @@ const cardStyle = {
   boxShadow: "1px 1px 2px gray",
   border: "none",
   cursor: "pointer",
-  ":hover": {
-    color: "black",
+  "&:hover": {
+    backgroundColor: "blue",
   },
 };
 
