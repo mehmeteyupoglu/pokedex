@@ -41,9 +41,34 @@ export const renderTypes = (arr, index) => {
 };
 
 export const renderMoves = (arr, index) => {
-  let moves = arr.slice(0, 10).map((item) => {
+  let moves = arr.map((item) => {
     return item.move.name;
   });
 
   return moves.join(", ");
+};
+
+export const check = (id, pokemonStore) => {
+  var found = false;
+  for (var i = 0; i < pokemonStore.length; i++) {
+    if (pokemonStore[i].id == id) {
+      found = true;
+      break;
+    }
+  }
+
+  return found;
+};
+
+export const catchAndRelease = {
+  catch: {
+    type: "CATCH_POKEMON",
+    color: "success",
+    text: "Catch",
+  },
+  release: {
+    type: "RELEASE_POKEMON",
+    color: "danger",
+    text: "Release",
+  },
 };
