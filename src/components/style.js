@@ -9,3 +9,9 @@ export const cardStyle = {
     backgroundColor: "blue",
   },
 };
+
+export const styledButton = () => {
+  return {
+    color: "#28a745",
+  };
+};

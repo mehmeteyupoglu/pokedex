@@ -1,32 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Card,
   CardBody,
   CardSubtitle,
   Alert,
   Button,
-  Container,
   Row,
   Col,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
 } from "reactstrap";
 
-import {
-  filteredPokemons,
-  renderAbilities,
-  renderTypes,
-  renderMoves,
-  catchAndRelease,
-} from "../helper/pokemonFunctions";
+import { renderAbilities, catchAndRelease } from "../helper/pokemonFunctions";
 
 import poke from "../assets/pokemon.png";
 
-import { cardStyle } from "./style";
+import { cardStyle, styledButton } from "./style";
 
 import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function Caught() {
   const pokemonStore = useSelector((state) => state.pokemonReducer);
@@ -105,18 +97,23 @@ export default function Caught() {
                         justifyContent: "space-between",
                       }}
                     >
-                      {/* <Button
-                        color={catchAndRelease.catch.color}
+                      <Button
+                        color={catchAndRelease.release.color}
                         size="sm"
                         onClick={() =>
                           dispatch({
-                            type: catchAndRelease.catch.type,
-                            payload: item,
+                            type: catchAndRelease.release.type,
+                            payload: item.id,
                           })
                         }
                       >
-                        Catch
-                      </Button> */}
+                        Release
+                      </Button>
+                      <div style={styledButton()}>
+                        <FontAwesomeIcon
+                          icon={item.isFavorite ? faCheck : faPlus}
+                        />
+                      </div>
                     </div>
                   </CardBody>
                 </Card>
