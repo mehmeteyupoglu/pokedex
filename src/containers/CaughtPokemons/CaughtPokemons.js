@@ -1,9 +1,15 @@
 import React from "react";
+import Caught from "../../components/Caught";
+import { Container } from "reactstrap";
 
 export default function CaughtPokemons() {
   return (
     <div>
-      <h1>caught pokemons</h1>
+      <Container>
+        <h1>Caught Pokemons</h1>
+        <hr />
+        <Caught />
+      </Container>
     </div>
   );
 }
