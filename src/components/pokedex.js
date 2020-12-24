@@ -1,36 +1,63 @@
 import React, { useEffect, useState } from "react";
-
 import { useSelector, useDispatch } from "react-redux";
 import {
   Card,
-  CardImg,
-  CardText,
   CardBody,
-  CardHeader,
-  CardTitle,
   CardSubtitle,
   Alert,
   Button,
   Container,
   Row,
   Col,
-  Spinner,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  PopoverHeader,
+  PopoverBody,
+  UncontrolledPopover,
 } from "reactstrap";
 
 import poke from "../assets/pokemon.png";
+import {
+  filteredPokemons,
+  renderAbilities,
+  renderTypes,
+  renderMoves,
+  catchAndRelease,
+} from "../helper/pokemonFunctions";
 
-function Pokedex({ props, pokemonData }) {
-  const renderAbilities = (arr, index) => {
-    let abilities = arr.map((item) => {
-      return item.ability.name;
-    });
+import { cardStyle } from "./style";
 
-    return abilities.join(", ");
+function Pokedex({ props, pokemonData, buttonLabel, className }) {
+  const pokemonStore = useSelector((state) => state.pokemonReducer);
+  const dispatch = useDispatch();
+  console.log("pokemonStore: ", pokemonStore);
+
+  const [notification, setNotification] = useState(false);
+
+  const [currentId, setId] = useState(0);
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+
+  console.log(currentId);
+
+  const showNotification = () => {
+    setNotification(true);
+
+    setTimeout(function () {
+      setNotification(false);
+    }, 1750);
   };
+
   return (
     <div>
       <Container>
-        <Row className="d-flex justify-content-between flex-wrap">
+        <Modal isOpen={notification}>
+          <Alert color="success">Caught Successfully!</Alert>
+        </Modal>
+        <Row className="d-flex flex-wrap">
           {pokemonData.map((item, index) => {
             return (
               <div key={index}>
@@ -55,6 +82,7 @@ function Pokedex({ props, pokemonData }) {
                         {item.name}
                       </CardSubtitle>
                     </CardBody>
+
                     <img
                       width="60%"
                       src={item.sprites.front_default}
@@ -104,25 +132,25 @@ function Pokedex({ props, pokemonData }) {
                         <Button
                           color="danger mb-10"
                           size="sm"
-                          outline
-                          // onClick={() =>
-                          //   dispatch({
-                          //     type: "RELEASE_POKEMON",
-                          //     payload: item.id,
-                          //   })
-                          // }
+                          onClick={() => {
+                            setModal(true);
+                            setId(item.id);
+                          }}
                         >
                           Pokédex
                         </Button>
+
                         <Button
-                          color="success"
+                          id={item.id}
+                          color={catchAndRelease.catch.color}
                           size="sm"
-                          // onClick={() =>
-                          //   dispatch({
-                          //     type: "CATCH_POKEMON",
-                          //     payload: item,
-                          //   })
-                          // }
+                          onClick={() => {
+                            dispatch({
+                              type: catchAndRelease.catch.type,
+                              payload: item,
+                            });
+                            showNotification();
+                          }}
                         >
                           Catch
                         </Button>
@@ -134,21 +162,70 @@ function Pokedex({ props, pokemonData }) {
             );
           })}
         </Row>
+        {pokemonData
+          .filter((item) => {
+            return item.id === currentId;
+          })
+          .map((pokemon) => {
+            return (
+              <Modal isOpen={modal} toggle={toggle} className={className}>
+                <ModalHeader
+                  toggle={toggle}
+                  className="mb-2 text-muted text-capitalize"
+                >
+                  {pokemon.name}
+                </ModalHeader>
+                <ModalBody
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "0.75rem",
+                  }}
+                >
+                  <img
+                    src={pokemon.sprites.front_default}
+                    alt={`Pokemon: ${pokemon.name}`}
+                    className="rounded"
+                  />
+                  <div
+                    style={{
+                      marginLeft: "2rem",
+                    }}
+                  >
+                    <p className="text-capitalize">
+                      <strong>Abilities: </strong>
+                      {renderAbilities(pokemon.abilities)}
+                    </p>
+                    <p className="text-capitalize">
+                      <strong>Types: </strong>
+                      {renderTypes(pokemon.types)}
+                    </p>
+                    <p className="text-capitalize">
+                      <strong>Moves: </strong>
+                      {renderMoves(pokemon.moves)}
+                    </p>
+                    <p className="text-capitalize">
+                      <strong>Experience: </strong>
+                      {pokemon.base_experience}
+                    </p>
+                    <p>
+                      <strong>Weight: </strong>
+                      {pokemon.weight}
+                    </p>
+                    <p>
+                      <strong>Height: </strong>
+                      {pokemon.height}
+                    </p>
+                  </div>
+                </ModalBody>
+                <ModalFooter></ModalFooter>
+              </Modal>
+            );
+          })}
+        ;
       </Container>
     </div>
   );
 }
-
-const cardStyle = {
-  margin: "10px",
-  height: "35rem",
-  width: "20rem",
-  boxShadow: "1px 1px 2px gray",
-  border: "none",
-  cursor: "pointer",
-  "&:hover": {
-    backgroundColor: "blue",
-  },
-};
 
 export default Pokedex;
