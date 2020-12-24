@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Spinner, Container } from "reactstrap";
+import { Spinner } from "reactstrap";
 
 import Pokedex from "../../components/Pokedex";
 import {
@@ -37,9 +37,19 @@ export default function Home() {
     setPokemonData(_pokemonData);
   };
 
+  console.log("pokemons ", pokemonData);
+
   return (
     <div>
-      <Pokedex pokemonData={pokemonData} />
+      {loading ? (
+        <Spinner
+          style={{ width: "8rem", height: "8rem" }}
+          type="grow"
+          color="info"
+        />
+      ) : (
+        <Pokedex pokemonData={pokemonData} />
+      )}
     </div>
   );
 }
