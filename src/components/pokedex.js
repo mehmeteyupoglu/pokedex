@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { useSelector, useDispatch } from "react-redux";
 import {
   Card,
@@ -18,10 +19,7 @@ import {
 
 import poke from "../assets/pokemon.png";
 
-function Pokedex({ props, pokemon }) {
-  const pokemons = useSelector((state) => state.pokemonReducer);
-  const dispatch = useDispatch();
-
+function Pokedex({ props, pokemonData }) {
   const renderAbilities = (arr, index) => {
     let abilities = arr.map((item) => {
       return item.ability.name;
@@ -29,12 +27,11 @@ function Pokedex({ props, pokemon }) {
 
     return abilities.join(", ");
   };
-  console.log("Pokemon store: ", pokemons);
   return (
     <div>
       <Container>
         <Row className="d-flex justify-content-between flex-wrap">
-          {pokemon.map((item, index) => {
+          {pokemonData.map((item, index) => {
             return (
               <div key={index}>
                 <Col>
@@ -108,24 +105,24 @@ function Pokedex({ props, pokemon }) {
                           color="danger mb-10"
                           size="sm"
                           outline
-                          onClick={() =>
-                            dispatch({
-                              type: "RELEASE_POKEMON",
-                              payload: item.id,
-                            })
-                          }
+                          // onClick={() =>
+                          //   dispatch({
+                          //     type: "RELEASE_POKEMON",
+                          //     payload: item.id,
+                          //   })
+                          // }
                         >
                           Pokédex
                         </Button>
                         <Button
                           color="success"
                           size="sm"
-                          onClick={() =>
-                            dispatch({
-                              type: "CATCH_POKEMON",
-                              payload: item,
-                            })
-                          }
+                          // onClick={() =>
+                          //   dispatch({
+                          //     type: "CATCH_POKEMON",
+                          //     payload: item,
+                          //   })
+                          // }
                         >
                           Catch
                         </Button>

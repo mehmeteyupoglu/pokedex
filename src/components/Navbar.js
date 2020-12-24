@@ -10,6 +10,8 @@ import {
   NavLink,
 } from "reactstrap";
 
+import { Link } from "react-router-dom";
+
 export default function CustomNavbar({ props }) {
   const [dark, setDark] = useState(false);
 
@@ -28,7 +30,9 @@ export default function CustomNavbar({ props }) {
           <Nav navbar>
             <div style={{ marginRight: "0.5rem" }}>
               <Button size="sm" style={{ marginRight: "1.5rem" }} outline>
-                <NavLink href="/caught-pokemons/">See Caught Items</NavLink>
+                <NavLink tag={Link} to="/caught-pokemons">
+                  Caught Pokemons
+                </NavLink>
               </Button>
               <Button size="sm" outline onClick={() => setDark(!dark)}>
                 <NavLink>{dark ? "Dark" : "Light"}</NavLink>
