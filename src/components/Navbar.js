@@ -23,13 +23,24 @@ export default function CustomNavbar({ props }) {
         style={{ boxShadow: "1px 3px 10px gray", marginBottom: "3rem" }}
       >
         <div className="container ">
-          <NavbarBrand>
+          <NavbarBrand tag={Link} to="/">
             <img src="https://img.icons8.com/color/48/000000/camera-pokemon.png" />{" "}
-            Pokédex
+            <span
+              className="font-weight-bold mr-2
+            "
+            >
+              Pokédex
+            </span>
+            App
           </NavbarBrand>
           <Nav navbar>
             <div style={{ marginRight: "0.5rem" }}>
-              <Button size="sm" style={{ marginRight: "1.5rem" }} outline>
+              <Button
+                size="sm"
+                style={{ marginRight: "1.5rem" }}
+                outline
+                color="danger"
+              >
                 <NavLink tag={Link} to="/caught-pokemons">
                   Caught Pokemons
                 </NavLink>
