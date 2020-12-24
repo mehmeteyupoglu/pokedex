@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Card,
@@ -13,14 +13,10 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  PopoverHeader,
-  PopoverBody,
-  UncontrolledPopover,
 } from "reactstrap";
 
 import poke from "../assets/pokemon.png";
 import {
-  filteredPokemons,
   renderAbilities,
   renderTypes,
   renderMoves,
@@ -29,26 +25,20 @@ import {
 
 import { cardStyle } from "./style";
 
-function Pokedex({ props, pokemonData, buttonLabel, className }) {
+function Pokedex({ props, pokemonData, className }) {
   const pokemonStore = useSelector((state) => state.pokemonReducer);
   const dispatch = useDispatch();
-  console.log("pokemonStore: ", pokemonStore);
-
   const [notification, setNotification] = useState(false);
-
   const [currentId, setId] = useState(0);
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
-
-  console.log(currentId);
 
   const showNotification = () => {
     setNotification(true);
 
     setTimeout(function () {
       setNotification(false);
-    }, 1750);
+    }, 1500);
   };
 
   return (

@@ -1,4 +1,6 @@
-import React from "react";
+// Import packages
+
+import React, { useState } from "react";
 import {
   Card,
   CardBody,
@@ -7,22 +9,30 @@ import {
   Button,
   Row,
   Col,
+  Modal,
 } from "reactstrap";
-
-import { renderAbilities, catchAndRelease } from "../helper/pokemonFunctions";
-
-import poke from "../assets/pokemon.png";
-
-import { cardStyle, styledButton } from "./style";
-
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faPlus, faCheck } from "@fortawesome/free-solid-svg-icons";
+
+// Import local files
+import { renderAbilities, catchAndRelease } from "../helper/pokemonFunctions";
+import poke from "../assets/pokemon.png";
+import { cardStyle, styledButton } from "./style";
 
 export default function Caught() {
   const pokemonStore = useSelector((state) => state.pokemonReducer);
   const dispatch = useDispatch();
+  const [notification, setNotification] = useState(false);
+
+  const showNotification = () => {
+    setNotification(true);
+
+    setTimeout(function () {
+      setNotification(false);
+    }, 1000);
+  };
+
   return (
     <div>
       <Row className="d-flex flex-wrap">
@@ -30,6 +40,14 @@ export default function Caught() {
           return (
             <div key={index}>
               <Col>
+                <Modal isOpen={notification}>
+                  <Alert color="success text-capitalize">
+                    {" "}
+                    {item.isFavorite
+                      ? item.name + " is removed from the favorites"
+                      : item.name + " added to the favorites"}
+                  </Alert>
+                </Modal>
                 <Card style={cardStyle}>
                   <CardBody
                     style={{
@@ -109,7 +127,18 @@ export default function Caught() {
                       >
                         Release
                       </Button>
-                      <div style={styledButton()}>
+                      <div
+                        style={styledButton()}
+                        onClick={() => {
+                          dispatch({
+                            type: item.isFavorite
+                              ? "REMOVE_FROM_FAVORITES"
+                              : "ADD_TO_FAVORITES",
+                            payload: item.id,
+                          });
+                          showNotification();
+                        }}
+                      >
                         <FontAwesomeIcon
                           icon={item.isFavorite ? faCheck : faPlus}
                         />

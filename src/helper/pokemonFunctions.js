@@ -68,7 +68,7 @@ export const catchAndRelease = {
   },
   release: {
     type: "RELEASE_POKEMON",
-    color: "danger",
+    color: "primary",
     text: "Release",
   },
 };

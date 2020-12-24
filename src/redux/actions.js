@@ -11,3 +11,17 @@ export const releasePokemon = (content) => {
     payload: content,
   };
 };
+
+export const addToFavorites = (content) => {
+  return {
+    type: "ADD_TO_FAVORITES",
+    payload: content,
+  };
+};
+
+export const removeFromFavorites = (content) => {
+  return {
+    type: "REMOVE_FROM_FAVORITES",
+    payload: content,
+  };
+};
