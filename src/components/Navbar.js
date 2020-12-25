@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navbar, NavbarBrand, Button, Nav, Badge } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { navbar, darkNavbar } from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +11,11 @@ export default function CustomNavbar({ props }) {
 
   const dispatch = useDispatch();
 
+  const currentPath = useLocation();
+
   const isDark = useSelector((state) => state.appReducer.isDark);
+
+  console.log(currentPath);
 
   return (
     <div>
@@ -29,14 +33,25 @@ export default function CustomNavbar({ props }) {
           </NavbarBrand>
           <Nav navbar>
             <div style={{ marginRight: "2rem" }}>
-              <Button
-                color="danger"
-                style={{ cursor: "pointer", marginRight: "1rem" }}
-                tag={Link}
-                to="/caught-pokemons"
-              >
-                Caught Pokemons
-              </Button>
+              {currentPath.pathname === "/caught-pokemons" ? (
+                <Button
+                  color="danger"
+                  style={{ cursor: "pointer", marginRight: "1rem" }}
+                  tag={Link}
+                  to="/"
+                >
+                  Catch Pokemons
+                </Button>
+              ) : (
+                <Button
+                  color="danger"
+                  style={{ cursor: "pointer", marginRight: "1rem" }}
+                  tag={Link}
+                  to="/caught-pokemons"
+                >
+                  Caught Pokemons
+                </Button>
+              )}
 
               <Badge
                 pill
