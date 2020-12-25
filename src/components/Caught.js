@@ -28,7 +28,7 @@ export default function Caught() {
 
   return (
     <div>
-      <hr color={isDark && "#505863"} />
+      <hr color={isDark ? "#505863" : null} />
       {pokemonStore.length < 1 ? (
         <h4>
           There is currently no pokemons here.{" "}

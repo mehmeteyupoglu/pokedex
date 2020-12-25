@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { navbar, darkNavbar } from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 export default function CustomNavbar({ props }) {
   const [dark, setDark] = useState(false);
@@ -44,7 +44,7 @@ export default function CustomNavbar({ props }) {
                 onClick={() => dispatch({ type: "CHANGE_THEME" })}
               >
                 <FontAwesomeIcon
-                  icon={isDark ? faSun : faCloudMoon}
+                  icon={isDark ? faSun : faMoon}
                   color="orange"
                   style={{ cursor: "pointer", fontSize: "1rem" }}
                 />
