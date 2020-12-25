@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./containers/Home/Home";
 import CaughtPokemons from "./containers/CaughtPokemons/CaughtPokemons";
 
@@ -22,6 +23,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <Footer />
     </div>
   );
 }

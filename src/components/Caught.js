@@ -123,7 +123,7 @@ export default function Caught() {
                           Release
                         </Button>
                         <div
-                          style={styledButton()}
+                          style={styledButton}
                           onClick={() => {
                             dispatch({
                               type: item.isFavorite

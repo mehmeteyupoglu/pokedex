@@ -44,7 +44,7 @@ function Pokedex({ props, pokemonData, className }) {
 
     setTimeout(function () {
       setNotification(false);
-    }, 1500);
+    }, 750);
   };
 
   return (
@@ -214,7 +214,6 @@ function Pokedex({ props, pokemonData, className }) {
               </Modal>
             );
           })}
-        ;
       </Container>
     </div>
   );

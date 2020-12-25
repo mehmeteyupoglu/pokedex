@@ -8,15 +8,9 @@ import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import cameraPokemon from "../assets/cameraPokemon.png";
 
 export default function CustomNavbar({ props }) {
-  const [dark, setDark] = useState(false);
-
   const dispatch = useDispatch();
-
   const currentPath = useLocation();
-
   const isDark = useSelector((state) => state.appReducer.isDark);
-
-  console.log(currentPath);
 
   return (
     <div>
