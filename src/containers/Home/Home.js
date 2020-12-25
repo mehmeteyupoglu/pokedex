@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Spinner, Row, Col } from "reactstrap";
+import Pokedex from "../../components/pokedex";
 
-import Pokedex from "../../components/Pokedex";
 import {
   getAllPokemon,
   getIndividualPokemons,
