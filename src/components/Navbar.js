@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { navbar, darkNavbar } from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import cameraPokemon from "../assets/cameraPokemon.png";
 
 export default function CustomNavbar({ props }) {
   const [dark, setDark] = useState(false);
@@ -22,7 +23,7 @@ export default function CustomNavbar({ props }) {
       <Navbar color="dark" dark style={isDark ? darkNavbar : navbar}>
         <div className="container ">
           <NavbarBrand tag={Link} to="/">
-            <img src="https://img.icons8.com/color/48/000000/camera-pokemon.png" />{" "}
+            <img src={cameraPokemon} />{" "}
             <span
               className="font-weight-bold mr-2
             "
