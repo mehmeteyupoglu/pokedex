@@ -25,3 +25,10 @@ export const removeFromFavorites = (content) => {
     payload: content,
   };
 };
+
+export const changeTheme = (content) => {
+  return {
+    type: "CHANGE_THEME",
+    payload: content,
+  };
+};

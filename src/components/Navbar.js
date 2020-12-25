@@ -1,27 +1,21 @@
 import React, { useState } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Button,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
-
+import { Navbar, NavbarBrand, Button, Nav, Badge } from "reactstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { navbar, darkNavbar } from "./style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCloudMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 export default function CustomNavbar({ props }) {
   const [dark, setDark] = useState(false);
 
+  const dispatch = useDispatch();
+
+  const isDark = useSelector((state) => state.appReducer.isDark);
+
   return (
     <div>
-      <Navbar
-        color="dark"
-        dark
-        style={{ boxShadow: "1px 3px 10px gray", marginBottom: "3rem" }}
-      >
+      <Navbar color="dark" dark style={isDark ? darkNavbar : navbar}>
         <div className="container ">
           <NavbarBrand tag={Link} to="/">
             <img src="https://img.icons8.com/color/48/000000/camera-pokemon.png" />{" "}
@@ -34,20 +28,27 @@ export default function CustomNavbar({ props }) {
             App
           </NavbarBrand>
           <Nav navbar>
-            <div style={{ marginRight: "0.5rem" }}>
+            <div style={{ marginRight: "2rem" }}>
               <Button
-                size="sm"
-                style={{ marginRight: "1.5rem" }}
-                outline
                 color="danger"
+                style={{ cursor: "pointer", marginRight: "1rem" }}
+                tag={Link}
+                to="/caught-pokemons"
               >
-                <NavLink tag={Link} to="/caught-pokemons">
-                  Caught Pokemons
-                </NavLink>
+                Caught Pokemons
               </Button>
-              <Button size="sm" outline onClick={() => setDark(!dark)}>
-                <NavLink>{dark ? "Dark" : "Light"}</NavLink>
-              </Button>
+
+              <Badge
+                pill
+                color="light"
+                onClick={() => dispatch({ type: "CHANGE_THEME" })}
+              >
+                <FontAwesomeIcon
+                  icon={isDark ? faSun : faCloudMoon}
+                  color="orange"
+                  style={{ cursor: "pointer", fontSize: "1rem" }}
+                />
+              </Badge>
             </div>
           </Nav>
         </div>

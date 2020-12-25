@@ -1,8 +1,7 @@
 import { combineReducers, createStore } from "redux";
-import { pokemonReducer } from "./reducers";
+import { pokemonReducer } from "./reducers/pokeReducer";
+import { appReducer } from "./reducers/appReducer";
 
-const reducers = combineReducers({
-  pokemonReducer,
-});
-
-export const store = createStore(reducers);
+export const store = createStore(
+  combineReducers({ pokemonReducer, appReducer })
+);
