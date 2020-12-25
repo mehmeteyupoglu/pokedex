@@ -25,27 +25,38 @@ export function filterPokemons(id, pokemons) {
 }
 
 export const renderAbilities = (arr, index) => {
-  let abilities = arr.map((item) => {
-    return item.ability.name;
-  });
+  if (arr.length > 0) {
+    let abilities = arr.map((item) => {
+      return item.ability.name;
+    });
 
-  return abilities.join(", ");
+    return abilities.join(", ");
+  }
+  return null;
 };
 
 export const renderTypes = (arr, index) => {
-  let types = arr.map((item) => {
-    return item.type.name;
-  });
+  if (arr.length) {
+    let types = arr.map((item) => {
+      return item.type.name;
+    });
 
-  return types.join(", ");
+    return types.join(", ");
+  }
+
+  return null;
 };
 
 export const renderMoves = (arr, index) => {
-  let moves = arr.map((item) => {
-    return item.move.name;
-  });
+  if (arr.length) {
+    let moves = arr.map((item) => {
+      return item.move.name;
+    });
 
-  return moves.join(", ");
+    return moves.join(", ");
+  }
+
+  return null;
 };
 
 export const check = (id, pokemonStore) => {
@@ -68,7 +79,7 @@ export const catchAndRelease = {
   },
   release: {
     type: "RELEASE_POKEMON",
-    color: "primary",
+    color: "info",
     text: "Release",
   },
 };

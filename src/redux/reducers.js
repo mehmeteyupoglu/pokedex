@@ -3,12 +3,20 @@ const initialState = [];
 export const pokemonReducer = (state = initialState, action) => {
   switch (action.type) {
     case "CATCH_POKEMON":
-      alert("catch calisti");
-      return state.map((item) => {
-        if (item.id === action.payload.id) {
-          return item;
+      console.log("catch calisti");
+
+      if (state.length > 0) {
+        const existsInArray = state.some(
+          (item) => item.id === action.payload.id
+        );
+        if (existsInArray) {
+          console.log("item is in the list");
+          return state;
         }
-        return {
+      }
+      return [
+        ...state,
+        {
           id: action.payload.id,
           name: action.payload.name,
           weight: action.payload.weight,
@@ -16,13 +24,15 @@ export const pokemonReducer = (state = initialState, action) => {
           img: action.payload.sprites.front_default,
           abilities: action.payload.abilities,
           isFavorite: false,
-        };
+        },
+      ];
+
+    case "RELEASE_POKEMON":
+      console.log("release calisti");
+      return state.filter((pokemon) => {
+        return pokemon.id !== action.payload;
       });
 
-    // case "RELEASE_POKEMON":
-    //   return state.filter((pokemon) => {
-    //     return pokemon.id === item;
-    //   });
     case "ADD_TO_FAVORITES":
       return state.map((item) => {
         if (item.id === action.payload) {
@@ -30,6 +40,7 @@ export const pokemonReducer = (state = initialState, action) => {
         }
         return item;
       });
+
     case "REMOVE_FROM_FAVORITES":
       return state.map((item) => {
         if (item.id === action.payload) {
