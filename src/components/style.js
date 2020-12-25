@@ -22,10 +22,9 @@ export const darkCardStyle = {
   border: `1px solid ${colors.gray}`,
 };
 
-export const styledButton = () => {
-  return {
-    color: "#28a745",
-  };
+export const styledButton = {
+  color: "#28a745",
+  cursor: "pointer",
 };
 
 export const navbar = {
@@ -37,6 +36,19 @@ export const darkNavbar = {
   borderBottom: `1px solid ${colors.gray}`,
   backgroundColor: colors.cardDBg,
   marginBottom: "3rem",
+};
+
+export const footer = {
+  height: "15rem",
+  boxShadow: `1px 3px 10px ${colors.gray}`,
+  marginTop: "3rem",
+};
+
+export const darkFooter = {
+  height: "15rem",
+  borderTop: `1px solid ${colors.gray}`,
+  backgroundColor: colors.cardDBg,
+  marginTop: "3rem",
 };
 
 export const darkModalHeader = {
