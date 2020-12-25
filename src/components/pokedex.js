@@ -165,13 +165,13 @@ function Pokedex({ props, pokemonData, className }) {
           .filter((item) => {
             return item.id === currentId;
           })
-          .map((pokemon) => {
+          .map((pokemon, index) => {
             return (
-              <Modal isOpen={modal} toggle={toggle}>
+              <Modal isOpen={modal} toggle={toggle} key={index}>
                 <ModalHeader
                   toggle={toggle}
                   className="text-muted text-capitalize"
-                  style={isDark && darkModalHeader}
+                  style={isDark ? darkModalHeader : null}
                 >
                   {pokemon.name}
                 </ModalHeader>
