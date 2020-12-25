@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./containers/Home/Home";
 import CaughtPokemons from "./containers/CaughtPokemons/CaughtPokemons";
-import PokedexDetails from "./containers/PokedexDetails/PokedexDetails";
+
 import { app, appDark } from "./appStyle";
 
 function App() {
@@ -16,9 +16,6 @@ function App() {
         <Switch>
           <Route path="/caught-pokemons">
             <CaughtPokemons />
-          </Route>
-          <Route path="/details">
-            <PokedexDetails />
           </Route>
           <Route path="/">
             <Home />

@@ -12,7 +12,6 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
 } from "reactstrap";
 
 import poke from "../assets/pokemon.png";
