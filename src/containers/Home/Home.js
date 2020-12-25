@@ -7,10 +7,11 @@ import {
   getIndividualPokemons,
 } from "../../helper/pokemonFunctions";
 
-export default function Home() {
+export default function Home(props) {
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const initialUrl = "https://pokeapi.co/api/v2/pokemon";
+  const number = 20;
+  const initialUrl = `https://pokeapi.co/api/v2/pokemon?offset=300&limit=${number}`;
 
   useEffect(() => {
     async function fetchData() {
@@ -37,8 +38,6 @@ export default function Home() {
     setPokemonData(_pokemonData);
   };
 
-  console.log("pokemons ", pokemonData);
-
   return (
     <div>
       {loading ? (
@@ -57,7 +56,9 @@ export default function Home() {
           </Row>
         </Container>
       ) : (
-        <Pokedex pokemonData={pokemonData} />
+        <div>
+          <Pokedex pokemonData={pokemonData} />
+        </div>
       )}
     </div>
   );
