@@ -1,21 +1,16 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams,
-} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import "./App.css";
 import Home from "./containers/Home/Home";
 import CaughtPokemons from "./containers/CaughtPokemons/CaughtPokemons";
 import PokedexDetails from "./containers/PokedexDetails/PokedexDetails";
+import { app, appDark } from "./appStyle";
 
 function App() {
+  const isDark = useSelector((state) => state.appReducer.isDark);
   return (
-    <div className="App">
+    <div style={isDark ? appDark : app}>
       <Navbar />
       <div className="mt-10">
         <Switch>
