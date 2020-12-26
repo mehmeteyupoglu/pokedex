@@ -17,7 +17,7 @@ Click [here](https://pokedextr.netlify.app/) to see the app
 - Optimum click principle is adopted for UX. The user does not have to move the mouse too much to do activities throught the page.
 - Instead of going to a different route, pokedex is available in a modal, which is much more performant.
 - The buttons are colored in line with pokemon anime's certain colors: `red`, `blue`, `gray`.
-- Only for `catch` button a green color is preffered to make a contrast with `pokedex` button and to help user think intuitively for the cath action.
+- Only for `catch` button a green color is preffered to make a contrast with `pokedex` button and to help user think intuitively for the catch action.
 
 ## Get Started
 
