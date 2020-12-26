@@ -31,13 +31,15 @@ export default function Caught() {
     <div>
       <hr color={isDark ? "#505863" : null} />
       {pokemonStore.length < 1 ? (
-        <h4>
-          There is currently no pokemons here.{" "}
-          <span tag={Link} to="/">
-            Go and catch
-          </span>{" "}
-          some.
-        </h4>
+        <div style={{ minHeight: "60vh" }}>
+          <h4>
+            There is currently no pokemons here.{" "}
+            <span tag={Link} to="/">
+              Go and catch
+            </span>{" "}
+            some.
+          </h4>
+        </div>
       ) : (
         <Row className="d-flex flex-wrap">
           {pokemonStore.map((item, index) => {
