@@ -45,7 +45,7 @@ export default function Home(props) {
   return (
     <div>
       {loading ? (
-        <Container>
+        <Container style={{ minHeight: "60vh" }}>
           <Row>
             <Col>
               <Spinner
