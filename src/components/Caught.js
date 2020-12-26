@@ -1,6 +1,6 @@
 // Import packages
 
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -22,6 +22,7 @@ import poke from "../assets/pokemon.png";
 import { cardStyle, darkCardStyle, styledButton } from "./style";
 
 export default function Caught() {
+  //Reach data from Redux
   const pokemonStore = useSelector((state) => state.pokemonReducer);
   const isDark = useSelector((state) => state.appReducer.isDark);
   const dispatch = useDispatch();
@@ -110,18 +111,21 @@ export default function Caught() {
                           justifyContent: "space-between",
                         }}
                       >
+                        {/* Update redux when the pokemon released */}
                         <Button
                           color={catchAndRelease.release.color}
                           size="sm"
                           onClick={() =>
                             dispatch({
-                              type: "RELEASE_POKEMON",
+                              type: catchAndRelease.release.type,
                               payload: item.id,
                             })
                           }
                         >
-                          Release
+                          {catchAndRelease.release.text}
                         </Button>
+
+                        {/* Update redux when the pokemon is marked/unmarked as favorite */}
                         <div
                           style={styledButton}
                           onClick={() => {

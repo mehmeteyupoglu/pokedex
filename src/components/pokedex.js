@@ -1,3 +1,5 @@
+//Packages
+
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -14,6 +16,7 @@ import {
   ModalBody,
 } from "reactstrap";
 
+//Local Files
 import poke from "../assets/pokemon.png";
 import {
   renderAbilities,
@@ -30,15 +33,15 @@ import {
   darkModalHeader,
 } from "./style";
 
-function Pokedex({ props, pokemonData, className }) {
+function Pokedex({ props, pokemonData }) {
   const isDark = useSelector((state) => state.appReducer.isDark);
-
   const dispatch = useDispatch();
   const [notification, setNotification] = useState(false);
   const [currentId, setId] = useState(0);
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
+  //When you catch a pokemon this functions handles the notification
   const showNotification = () => {
     setNotification(true);
 
@@ -137,7 +140,7 @@ function Pokedex({ props, pokemonData, className }) {
                         >
                           Pokédex
                         </Button>
-
+                        {/* Update redux when the pokemon catched. dex record is set in redux */}
                         <Button
                           id={item.id}
                           color={catchAndRelease.catch.color}

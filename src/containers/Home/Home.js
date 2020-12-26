@@ -1,7 +1,9 @@
+//Packages
 import React, { useState, useEffect } from "react";
 import { Container, Spinner, Row, Col } from "reactstrap";
-import Pokedex from "../../components/pokedex";
 
+//Local Files
+import Pokedex from "../../components/pokedex";
 import {
   getAllPokemon,
   getIndividualPokemons,
@@ -13,6 +15,7 @@ export default function Home(props) {
   const number = 20;
   const initialUrl = `https://pokeapi.co/api/v2/pokemon?offset=300&limit=${number}`;
 
+  //Retrives data with the help of helper functions and fetchData()
   useEffect(() => {
     async function fetchData() {
       try {
@@ -28,6 +31,7 @@ export default function Home(props) {
     fetchData();
   }, []);
 
+  //Sets the retrived data to the components state
   const loadPokemon = async (data) => {
     let _pokemonData = await Promise.all(
       data.map(async (pokemon) => {

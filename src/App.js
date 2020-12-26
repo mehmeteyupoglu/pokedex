@@ -1,11 +1,13 @@
+//Packages
 import React from "react";
 import { useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
+
+//Local files
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./containers/Home/Home";
 import CaughtPokemons from "./containers/CaughtPokemons/CaughtPokemons";
-
 import { app, appDark } from "./appStyle";
 
 function App() {

@@ -1,8 +1,10 @@
+//Packages
 import { combineReducers, createStore } from "redux";
 import { pokemonReducer } from "./reducers/pokeReducer";
 import { appReducer } from "./reducers/appReducer";
+
+//Local files
 import { loadState, saveState } from "./localStorage";
-// import { throttle } from "lodash.throttle";
 
 const persistedState = loadState();
 
@@ -16,6 +18,7 @@ export const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+//Subscibe to the state to keep data in localStorage
 store.subscribe(() => {
   saveState({
     pokemonReducer: store.getState().pokemonReducer,

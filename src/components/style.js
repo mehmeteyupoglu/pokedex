@@ -1,9 +1,11 @@
+//Colors used the most
 export const colors = {
   gray: "#505863",
   cardDBg: "rgb(25 31 41)",
   cardText: "#f0f6fc",
 };
 
+//CARDS
 export const cardStyle = {
   margin: "10px",
   height: "35rem",
@@ -22,11 +24,7 @@ export const darkCardStyle = {
   border: `1px solid ${colors.gray}`,
 };
 
-export const styledButton = {
-  color: "#28a745",
-  cursor: "pointer",
-};
-
+//NAVBAR
 export const navbar = {
   boxShadow: `1px 3px 10px ${colors.gray}`,
   marginBottom: "3rem",
@@ -38,6 +36,7 @@ export const darkNavbar = {
   marginBottom: "3rem",
 };
 
+//FOOTER
 export const footer = {
   height: "15rem",
   boxShadow: `1px 3px 10px ${colors.gray}`,
@@ -51,6 +50,7 @@ export const darkFooter = {
   marginTop: "3rem",
 };
 
+//MODAL
 export const darkModalHeader = {
   backgroundColor: "rgb(25 31 41)",
   color: colors.cardText,
@@ -70,4 +70,10 @@ export const darkModalBody = {
   fontSize: "0.75rem",
   backgroundColor: colors.cardDBg,
   color: colors.cardText,
+};
+
+//MISC.
+export const styledButton = {
+  color: "#28a745",
+  cursor: "pointer",
 };

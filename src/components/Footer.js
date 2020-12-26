@@ -1,17 +1,9 @@
+//Packages
 import React from "react";
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  Col,
-  Row,
-  Container,
-  NavbarText,
-} from "reactstrap";
-import { Link } from "react-router-dom";
+import { Navbar, Col, Row, Container, NavbarText } from "reactstrap";
 import { useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+
+//Local files
 import { footer, darkFooter } from "./style";
 
 export default function CustomNavbar({ props }) {

@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+//Packages
+import React from "react";
 import { Navbar, NavbarBrand, Button, Nav, Badge } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { navbar, darkNavbar } from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+
+//Local files
+import { navbar, darkNavbar } from "./style";
 import cameraPokemon from "../assets/cameraPokemon.png";
 
 export default function CustomNavbar({ props }) {
   const dispatch = useDispatch();
-  const currentPath = useLocation();
   const isDark = useSelector((state) => state.appReducer.isDark);
+
+  //Current path is needed for dynamic button. See Catch and Caught buttons below
+  const currentPath = useLocation();
 
   return (
     <div>

@@ -1,3 +1,5 @@
+//Used to keep dex record, caught pokemons and favorite pokemons
+
 const initialState = [];
 
 export const pokemonReducer = (state = initialState, action) => {

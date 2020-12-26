@@ -1,3 +1,5 @@
+//Used in various places to let the components know whether the app is in dark mode or not.
+
 const initialState = {
   isDark: false,
 };

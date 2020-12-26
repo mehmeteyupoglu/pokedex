@@ -1,3 +1,5 @@
+//RETRIEVE DATA FROM THE API
+
 export async function getAllPokemon(url) {
   return new Promise((resolve, reject) => {
     fetch(url)
@@ -18,12 +20,14 @@ export async function getIndividualPokemons(url) {
   });
 }
 
+//Filters pokemons for pokedex modal
 export function filterPokemons(id, pokemons) {
   const filteredPokemons = pokemons.filter((item) => {
     return item.id === id;
   });
 }
 
+// Renders types, abiilities, moves of pokemons and list them
 export const renderAbilities = (arr, index) => {
   if (arr.length > 0) {
     let abilities = arr.map((item) => {

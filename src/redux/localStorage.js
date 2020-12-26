@@ -1,3 +1,5 @@
+//Helps the keep data in local storage, is used in store.js
+
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem("state");
@@ -13,7 +15,5 @@ export const saveState = (state) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("state", serializedState);
-  } catch {
-    // ignore write errors
-  }
+  } catch {}
 };
