@@ -34,6 +34,12 @@ export default function CustomNavbar({ props }) {
                 >
                   Netlify
                 </span>
+                <p>
+                  Created by{" "}
+                  <a href="https://github.com/mehmeteyupoglu" target="_blank">
+                    Mehmet Eyupoglu
+                  </a>
+                </p>
               </NavbarText>
             </Col>
           </Row>
