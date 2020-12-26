@@ -24,21 +24,19 @@ export default function CustomNavbar({ props }) {
           <Row className="d-flex justify-content-center">
             <Col className="col-md-auto">
               <NavbarText>
-                Deployed with{" "}
-                <span
-                  className="font-weight-bold mr-2
-            "
-                  style={{
-                    color: "white",
-                  }}
-                >
-                  Netlify
-                </span>
                 <p>
                   Created by{" "}
-                  <a href="https://github.com/mehmeteyupoglu" target="_blank">
-                    Mehmet Eyupoglu
-                  </a>
+                  <span
+                    className="font-weight-bold mr-2
+            "
+                    style={{
+                      color: "white",
+                    }}
+                  >
+                    <a href="https://github.com/mehmeteyupoglu" target="_blank">
+                      Mehmet Eyupoglu
+                    </a>
+                  </span>{" "}
                 </p>
               </NavbarText>
             </Col>
