@@ -22,7 +22,7 @@ export default function Home(props) {
       try {
         let response = await getAllPokemon(initialUrl);
         let pokemon = await loadPokemon(response.results);
-        console.log("pokemon", pokemon);
+
         setLoading(false);
       } catch (error) {
         console.log("error", error);

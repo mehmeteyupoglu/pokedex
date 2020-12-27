@@ -1,7 +1,5 @@
 // Import packages
-
 import React from "react";
-
 import { Card, CardBody, Button, Row, Col } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,12 +8,14 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 // Import local files
 import { catchAndRelease } from "../constants";
 import { cardStyle, darkCardStyle, styledButton } from "../style";
+import { cardActionStyle } from "../PokemonCard/CardActions/style";
+
+// Components
 import NoPokemon from "./NoPokemon";
 import CardHeader from "../PokemonCard/CardHeader";
 import CardSubheader from "../PokemonCard/CardSubheader";
 import CardImage from "../PokemonCard/CardImage";
 import CardText from "../PokemonCard/CardText";
-import { cardActionStyle } from "../PokemonCard/CardActions/style";
 
 const { checkDarkState, renderAbilities } = require("../utils");
 

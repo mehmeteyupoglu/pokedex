@@ -1,10 +1,13 @@
+//Packages
 import React from "react";
 import { Badge } from "reactstrap";
 import { useDispatch } from "react-redux";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
+//Local Files
+import { darkModeStyle } from "./style";
+//Components
 const { checkDarkState } = require("../../utils");
 
 export default function DarkModeButton({ isDark }) {
@@ -26,8 +29,3 @@ export default function DarkModeButton({ isDark }) {
     </div>
   );
 }
-
-const darkModeStyle = {
-  cursor: "pointer",
-  fontSize: "1rem",
-};

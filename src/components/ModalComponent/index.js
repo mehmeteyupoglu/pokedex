@@ -1,6 +1,9 @@
+//Packages
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Modal } from "reactstrap";
+
+//Components
 import ModalTitle from "./ModalTitle";
 import ModalBodyContainer from "./ModalBodyContainer";
 

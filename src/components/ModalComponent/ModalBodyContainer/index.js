@@ -1,6 +1,11 @@
+//Packages
 import React from "react";
 import { ModalBody } from "reactstrap";
-import { modalBody, darkModalBody } from "./style";
+
+//Local Files
+import { modalBody, darkModalBody, modalTextStyle } from "./style";
+
+//Components
 import ModalImage from "./ModalImage";
 import Abilities from "./Abilities";
 import Experience from "./Experience";
@@ -22,11 +27,7 @@ export default function ModalBodyContainer({ pokemon, isDark }) {
       <ModalBody style={checkDarkState(isDark, darkModalBody, modalBody)}>
         <ModalImage pokemon={pokemon} />
 
-        <div
-          style={{
-            marginLeft: "2rem",
-          }}
-        >
+        <div style={modalTextStyle}>
           <Abilities pokemon={pokemon} renderAbilities={renderAbilities} />
           <Types pokemon={pokemon} renderTypes={renderTypes} />
           <Moves pokemon={pokemon} renderMoves={renderMoves} />

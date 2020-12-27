@@ -13,3 +13,7 @@ export const darkModalBody = {
   backgroundColor: colors.cardDBg,
   color: colors.cardText,
 };
+
+export const modalTextStyle = {
+  marginLeft: "2rem",
+};

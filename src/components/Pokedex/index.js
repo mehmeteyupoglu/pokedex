@@ -1,24 +1,13 @@
 //Packages
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  Card,
-  CardBody,
-  Alert,
-  Button,
-  Container,
-  Row,
-  Col,
-  Modal,
-  ModalHeader,
-  ModalBody,
-} from "reactstrap";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Card, CardBody, Container, Row, Col } from "reactstrap";
 
 //Local Files
-
 import { catchAndRelease } from "../constants";
 import { cardStyle, darkCardStyle } from "../style";
 
+//Components
 import CardHeader from "../PokemonCard/CardHeader";
 import CardSubheader from "../PokemonCard/CardSubheader";
 import CardImage from "../PokemonCard/CardImage";
@@ -31,11 +20,7 @@ const { checkDarkState } = require("../utils");
 
 function Pokedex({ props, pokemonData }) {
   const appReducer = useSelector((state) => state.appReducer);
-
   const { isDark, notification, itemId, modal } = appReducer;
-
-  console.log("app reducer", appReducer);
-  console.log("modal ", modal);
 
   return (
     <div>

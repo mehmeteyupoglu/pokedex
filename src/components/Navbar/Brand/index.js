@@ -1,7 +1,9 @@
+//Packages
 import React from "react";
 import { Navbar, NavbarBrand } from "reactstrap";
 import { Link } from "react-router-dom";
 
+//Local Files
 import cameraPokemon from "../../../assets/cameraPokemon.png";
 
 export default function Brand() {

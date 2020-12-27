@@ -1,6 +1,9 @@
+//Packages
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "reactstrap";
+
+//Local Files
 import { cardActionStyle } from "./style";
 
 const { isPokemonCaught } = require("../../utils");

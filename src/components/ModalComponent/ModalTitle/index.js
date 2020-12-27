@@ -1,8 +1,10 @@
+//Packages
 import React from "react";
 import { ModalHeader } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { darkModalHeader } from "./style";
 
+//Local files
 const { checkDarkState } = require("../../utils");
 
 export default function ModalTitle({ pokemon, isDark }) {
