@@ -52,7 +52,10 @@ function Pokedex({ props, pokemonData }) {
                     <CardHeader item={item} isDark={isDark} />
                     <CardSubheader item={item} />
 
-                    <CardImage item={item} isDark={isDark} />
+                    <CardImage
+                      item={item.sprites.front_default}
+                      isDark={isDark}
+                    />
                     <CardBody tag="h6">
                       <CardText item={item} />
                       <CardActions

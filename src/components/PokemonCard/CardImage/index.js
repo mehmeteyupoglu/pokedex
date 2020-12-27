@@ -6,7 +6,7 @@ export default function CardImage({ item, isDark }) {
     <div style={imgContainerStyle}>
       <img
         width="60%"
-        src={item.sprites.front_default}
+        src={item}
         alt={`Pokemon: ${item.name}`}
         className="rounded"
         style={imgStyle(isDark)}
