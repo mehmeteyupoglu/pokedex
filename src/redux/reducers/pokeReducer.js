@@ -5,14 +5,11 @@ const initialState = [];
 export const pokemonReducer = (state = initialState, action) => {
   switch (action.type) {
     case "CATCH_POKEMON":
-      console.log("catch calisti");
-
       if (state.length > 0) {
         const existsInArray = state.some(
           (item) => item.id === action.payload.id
         );
         if (existsInArray) {
-          console.log("item is in the list");
           return state;
         }
       }
@@ -30,7 +27,6 @@ export const pokemonReducer = (state = initialState, action) => {
       ];
 
     case "RELEASE_POKEMON":
-      console.log("release calisti");
       return state.filter((pokemon) => {
         return pokemon.id !== action.payload;
       });
