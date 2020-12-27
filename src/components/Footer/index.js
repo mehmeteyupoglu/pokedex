@@ -4,7 +4,7 @@ import { Navbar, Col, Row, Container, NavbarText } from "reactstrap";
 import { useSelector } from "react-redux";
 
 //Local files
-import { footer, darkFooter } from "./style";
+import { footer, darkFooter } from "../style";
 
 export default function CustomNavbar({ props }) {
   const isDark = useSelector((state) => state.appReducer.isDark);

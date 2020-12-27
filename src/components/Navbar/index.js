@@ -7,8 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 //Local files
-import { navbar, darkNavbar } from "./style";
-import cameraPokemon from "../assets/cameraPokemon.png";
+import { navbar, darkNavbar } from "../style";
+import cameraPokemon from "../../assets/cameraPokemon.png";
+
+const checkDarkState = require("../utils");
 
 export default function CustomNavbar({ props }) {
   const dispatch = useDispatch();
@@ -17,9 +19,17 @@ export default function CustomNavbar({ props }) {
   //Current path is needed for dynamic button. See Catch and Caught buttons below
   const currentPath = useLocation();
 
+  const handleClick = () => {
+    dispatch({ type: "CHANGE_THEME" });
+  };
+
   return (
     <div>
-      <Navbar color="dark" dark style={isDark ? darkNavbar : navbar}>
+      <Navbar
+        color="dark"
+        dark
+        style={checkDarkState(isDark, darkNavbar, navbar)}
+      >
         <div className="container ">
           <NavbarBrand tag={Link} to="/">
             <img src={cameraPokemon} />{" "}
@@ -34,18 +44,13 @@ export default function CustomNavbar({ props }) {
           <Nav navbar>
             <div style={{ marginRight: "2rem" }}>
               {currentPath.pathname === "/caught-pokemons" ? (
-                <Button
-                  color="danger"
-                  style={{ cursor: "pointer", marginRight: "1rem" }}
-                  tag={Link}
-                  to="/"
-                >
+                <Button color="danger" style={btnStyle} tag={Link} to="/">
                   Catch Pokemons
                 </Button>
               ) : (
                 <Button
                   color="danger"
-                  style={{ cursor: "pointer", marginRight: "1rem" }}
+                  style={btnStyle}
                   tag={Link}
                   to="/caught-pokemons"
                 >
@@ -53,13 +58,9 @@ export default function CustomNavbar({ props }) {
                 </Button>
               )}
 
-              <Badge
-                pill
-                color="light"
-                onClick={() => dispatch({ type: "CHANGE_THEME" })}
-              >
+              <Badge pill color="light" onClick={() => handleClick()}>
                 <FontAwesomeIcon
-                  icon={isDark ? faSun : faMoon}
+                  icon={checkDarkState(isDark, faSun, faMoon)}
                   color="orange"
                   style={{ cursor: "pointer", fontSize: "1rem" }}
                 />
@@ -71,3 +72,8 @@ export default function CustomNavbar({ props }) {
     </div>
   );
 }
+
+const btnStyle = {
+  cursor: "pointer",
+  marginRight: "1rem",
+};

@@ -1,5 +1,4 @@
 //Packages
-
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -17,13 +16,13 @@ import {
 } from "reactstrap";
 
 //Local Files
-import poke from "../assets/pokemon.png";
+import poke from "../../assets/pokemon.png";
 import {
   renderAbilities,
   renderTypes,
   renderMoves,
   catchAndRelease,
-} from "../helper/pokemonFunctions";
+} from "../../helper/pokemonFunctions";
 
 import {
   cardStyle,
@@ -31,7 +30,9 @@ import {
   darkModalBody,
   modalBody,
   darkModalHeader,
-} from "./style";
+} from "../style";
+
+const checkDarkState = require("../utils");
 
 function Pokedex({ props, pokemonData }) {
   const isDark = useSelector((state) => state.appReducer.isDark);
@@ -50,11 +51,18 @@ function Pokedex({ props, pokemonData }) {
     }, 750);
   };
 
+  const handleClick = (item) => {
+    dispatch({
+      type: catchAndRelease.catch.type,
+      payload: item,
+    });
+  };
+
   return (
     <div>
       <Container>
         <Modal isOpen={notification}>
-          <Alert color={isDark ? "dark" : "success"}>
+          <Alert color={checkDarkState(isDark, "dark", "success")}>
             Caught Successfully!
           </Alert>
         </Modal>
@@ -63,14 +71,18 @@ function Pokedex({ props, pokemonData }) {
             return (
               <div key={index}>
                 <Col>
-                  <Card style={isDark ? darkCardStyle : cardStyle}>
+                  <Card
+                    style={checkDarkState(isDark, darkCardStyle, cardStyle)}
+                  >
                     <CardBody
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
                       }}
                     >
-                      <Alert color={isDark ? "secondary" : "info"}>
+                      <Alert
+                        color={checkDarkState(isDark, "secondary", "info")}
+                      >
                         <img width="30%" src={poke} alt={item.name} />
                       </Alert>
                     </CardBody>
@@ -91,7 +103,11 @@ function Pokedex({ props, pokemonData }) {
                       style={{
                         margin: "auto",
                         border: "1px solid ",
-                        borderColor: isDark ? "#505863" : "rgb(0 0 0 / 13%)",
+                        borderColor: checkDarkState(
+                          isDark,
+                          "#505863",
+                          "rgb(0 0 0 / 13%)"
+                        ),
                       }}
                     />
                     <CardBody
@@ -146,10 +162,7 @@ function Pokedex({ props, pokemonData }) {
                           color={catchAndRelease.catch.color}
                           size="sm"
                           onClick={() => {
-                            dispatch({
-                              type: catchAndRelease.catch.type,
-                              payload: item,
-                            });
+                            handleClick(item);
                             showNotification();
                           }}
                         >
@@ -173,21 +186,25 @@ function Pokedex({ props, pokemonData }) {
                 <ModalHeader
                   toggle={toggle}
                   className="text-muted text-capitalize"
-                  style={isDark ? darkModalHeader : null}
+                  style={checkDarkState(isDark, darkModalHeader, null)}
                 >
                   {pokemon.name}
                 </ModalHeader>
-                <ModalBody style={isDark ? darkModalBody : modalBody}>
+                <ModalBody
+                  style={checkDarkState(isDark, darkModalBody, modalBody)}
+                >
                   <img
                     src={pokemon.sprites.front_default}
                     alt={`Pokemon: ${pokemon.name}`}
                     className="rounded"
                   />
+                  {/* parent comp */}
                   <div
                     style={{
                       marginLeft: "2rem",
                     }}
                   >
+                    {/* child comp */}
                     <p className="text-capitalize">
                       <strong>Abilities: </strong>
                       {renderAbilities(pokemon.abilities)}

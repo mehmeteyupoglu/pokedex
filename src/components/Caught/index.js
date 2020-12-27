@@ -17,9 +17,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 // Import local files
-import { renderAbilities, catchAndRelease } from "../helper/pokemonFunctions";
-import poke from "../assets/pokemon.png";
-import { cardStyle, darkCardStyle, styledButton } from "./style";
+import {
+  renderAbilities,
+  catchAndRelease,
+} from "../../helper/pokemonFunctions";
+import poke from "../../assets/pokemon.png";
+import { cardStyle, darkCardStyle, styledButton } from "../style";
+// import { checkDarkState } from "./utils";
+
+const checkDarkState = require("../utils");
 
 export default function Caught() {
   //Reach data from Redux
@@ -27,9 +33,25 @@ export default function Caught() {
   const isDark = useSelector((state) => state.appReducer.isDark);
   const dispatch = useDispatch();
 
+  const handleClick = (item, type) => {
+    dispatch({
+      type,
+      payload: item.id,
+    });
+  };
+
+  const handleToggle = (item) => {
+    dispatch({
+      type: item.isFavorite ? "REMOVE_FROM_FAVORITES" : "ADD_TO_FAVORITES",
+      payload: item.id,
+    });
+  };
+
+  const checkFavorite = (item) => (item.isFavorite ? "orange" : "gray");
+
   return (
     <div>
-      <hr color={isDark ? "#505863" : null} />
+      <hr color={checkDarkState(isDark, "#505863", null)} />
       {pokemonStore.length < 1 ? (
         <div style={{ minHeight: "60vh" }}>
           <h4>
@@ -46,14 +68,18 @@ export default function Caught() {
             return (
               <div key={index}>
                 <Col>
-                  <Card style={isDark ? darkCardStyle : cardStyle}>
+                  <Card
+                    style={checkDarkState(isDark, darkCardStyle, cardStyle)}
+                  >
                     <CardBody
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
                       }}
                     >
-                      <Alert color={isDark ? "secondary" : "info"}>
+                      <Alert
+                        color={checkDarkState(isDark, "secondary", "info")}
+                      >
                         <img width="30%" src={poke} alt={item.name} />
                       </Alert>
                     </CardBody>
@@ -74,7 +100,10 @@ export default function Caught() {
                       style={{
                         margin: "auto",
                         border: "1px solid ",
-                        borderColor: isDark ? "#505863" : "rgb(0 0 0 / 13%)",
+                        borderColor: checkDarkState(
+                          "#505863",
+                          "rgb(0 0 0 / 13%)"
+                        ),
                       }}
                     />
                     <CardBody
@@ -118,10 +147,7 @@ export default function Caught() {
                           color={catchAndRelease.release.color}
                           size="sm"
                           onClick={() =>
-                            dispatch({
-                              type: catchAndRelease.release.type,
-                              payload: item.id,
-                            })
+                            handleClick(item, catchAndRelease.release.type)
                           }
                         >
                           {catchAndRelease.release.text}
@@ -130,18 +156,11 @@ export default function Caught() {
                         {/* Update redux when the pokemon is marked/unmarked as favorite */}
                         <div
                           style={styledButton}
-                          onClick={() => {
-                            dispatch({
-                              type: item.isFavorite
-                                ? "REMOVE_FROM_FAVORITES"
-                                : "ADD_TO_FAVORITES",
-                              payload: item.id,
-                            });
-                          }}
+                          onClick={() => handleToggle(item)}
                         >
                           <FontAwesomeIcon
                             icon={faStar}
-                            color={item.isFavorite ? "orange" : "gray"}
+                            color={checkFavorite(item)}
                           />
                         </div>
                       </div>

@@ -3,11 +3,12 @@ import React, { useState, useEffect } from "react";
 import { Container, Spinner, Row, Col } from "reactstrap";
 
 //Local Files
-import Pokedex from "../../components/pokedex";
+import Pokedex from "../../components/Pokedex";
 import {
   getAllPokemon,
   getIndividualPokemons,
 } from "../../helper/pokemonFunctions";
+import { spinnerStyle, styledContainer } from "./style";
 
 export default function Home(props) {
   const [pokemonData, setPokemonData] = useState([]);
@@ -20,9 +21,8 @@ export default function Home(props) {
     async function fetchData() {
       try {
         let response = await getAllPokemon(initialUrl);
-        console.log(response);
         let pokemon = await loadPokemon(response.results);
-        console.log(pokemon);
+        console.log("pokemon", pokemon);
         setLoading(false);
       } catch (error) {
         console.log("error", error);
@@ -42,28 +42,22 @@ export default function Home(props) {
     setPokemonData(_pokemonData);
   };
 
-  return (
-    <div>
-      {loading ? (
-        <Container style={{ minHeight: "80vh" }}>
+  if (loading) {
+    return (
+      <div>
+        <Container style={styledContainer}>
           <Row>
             <Col>
-              <Spinner
-                style={{
-                  width: "8rem",
-                  height: "8rem",
-                }}
-                type="grow"
-                color="danger"
-              />
+              <Spinner style={spinnerStyle} type="grow" color="danger" />
             </Col>
           </Row>
         </Container>
-      ) : (
-        <div>
-          <Pokedex pokemonData={pokemonData} />
-        </div>
-      )}
+      </div>
+    );
+  }
+  return (
+    <div>
+      <Pokedex pokemonData={pokemonData} />
     </div>
   );
 }
