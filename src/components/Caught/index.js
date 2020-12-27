@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 // Import local files
-import { catchAndRelease } from "../../helper/pokemonFunctions";
+import { catchAndRelease } from "../constants";
 import poke from "../../assets/pokemon.png";
 import { cardStyle, darkCardStyle, styledButton } from "../style";
 import NoPokemon from "./NoPokemon";

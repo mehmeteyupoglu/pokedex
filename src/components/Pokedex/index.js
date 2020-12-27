@@ -16,20 +16,8 @@ import {
 
 //Local Files
 
-import {
-  renderAbilities,
-  renderTypes,
-  renderMoves,
-  catchAndRelease,
-} from "../../helper/pokemonFunctions";
-
-import {
-  cardStyle,
-  darkCardStyle,
-  darkModalBody,
-  modalBody,
-  darkModalHeader,
-} from "../style";
+import { catchAndRelease } from "../constants";
+import { cardStyle, darkCardStyle } from "../style";
 
 import CardHeader from "../PokemonCard/CardHeader";
 import CardSubheader from "../PokemonCard/CardSubheader";

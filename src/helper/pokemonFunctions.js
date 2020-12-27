@@ -19,37 +19,3 @@ export async function getIndividualPokemons(url) {
       });
   });
 }
-
-//Filters pokemons for pokedex modal
-export function filterPokemons(id, pokemons) {
-  const filteredPokemons = pokemons.filter((item) => {
-    return item.id === id;
-  });
-}
-
-// Renders types, abiilities, moves of pokemons and list them
-
-export const check = (id, pokemonStore) => {
-  var found = false;
-  for (var i = 0; i < pokemonStore.length; i++) {
-    if (pokemonStore[i].id == id) {
-      found = true;
-      break;
-    }
-  }
-
-  return found;
-};
-
-export const catchAndRelease = {
-  catch: {
-    type: "CATCH_POKEMON",
-    color: "success",
-    text: "Catch",
-  },
-  release: {
-    type: "RELEASE_POKEMON",
-    color: "info",
-    text: "Release",
-  },
-};
