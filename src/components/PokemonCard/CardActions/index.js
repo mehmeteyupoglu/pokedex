@@ -1,9 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "reactstrap";
 import { cardActionStyle } from "./style";
 
+const { isPokemonCaught } = require("../../utils");
+
 export default function CardActions({ item, catchAndRelease }) {
+  const pokemonStore = useSelector((state) => state.pokemonReducer);
   const dispatch = useDispatch();
 
   const setModal = () => {
@@ -39,6 +42,12 @@ export default function CardActions({ item, catchAndRelease }) {
       setNotification();
     }, 750);
   };
+
+  const disableButton = (item) => {
+    let id = item.id;
+    let result = isPokemonCaught(id, pokemonStore);
+    return result ? true : false;
+  };
   return (
     <div>
       <div style={cardActionStyle}>
@@ -61,6 +70,7 @@ export default function CardActions({ item, catchAndRelease }) {
             handleClick(item);
             showNotification();
           }}
+          disabled={disableButton(item)}
         >
           Catch
         </Button>

@@ -37,4 +37,29 @@ const renderMoves = (arr, index) => {
   return null;
 };
 
-module.exports = { checkDarkState, renderAbilities, renderTypes, renderMoves };
+const filterPokemons = (id, pokemons) => {
+  const filteredPokemons = pokemons.filter((item) => {
+    return item.id === id;
+  });
+};
+
+const isPokemonCaught = (id, pokemonStore) => {
+  var found = false;
+  for (var i = 0; i < pokemonStore.length; i++) {
+    if (pokemonStore[i].id == id) {
+      found = true;
+      break;
+    }
+  }
+
+  return found;
+};
+
+module.exports = {
+  checkDarkState,
+  renderAbilities,
+  renderTypes,
+  renderMoves,
+  filterPokemons,
+  isPokemonCaught,
+};
