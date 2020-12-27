@@ -1,7 +1,7 @@
 // Import packages
 
 import React from "react";
-import { Link } from "react-router-dom";
+
 import {
   Card,
   CardBody,
@@ -10,22 +10,18 @@ import {
   Button,
   Row,
   Col,
-  Modal,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 // Import local files
-import {
-  renderAbilities,
-  catchAndRelease,
-} from "../../helper/pokemonFunctions";
+import { catchAndRelease } from "../../helper/pokemonFunctions";
 import poke from "../../assets/pokemon.png";
 import { cardStyle, darkCardStyle, styledButton } from "../style";
-// import { checkDarkState } from "./utils";
+import NoPokemon from "./NoPokemon";
 
-const checkDarkState = require("../utils");
+const { checkDarkState, renderAbilities } = require("../utils");
 
 export default function Caught() {
   //Reach data from Redux
@@ -51,16 +47,11 @@ export default function Caught() {
 
   return (
     <div>
+      <h1>Caught Pokemons</h1>
       <hr color={checkDarkState(isDark, "#505863", null)} />
       {pokemonStore.length < 1 ? (
-        <div style={{ minHeight: "60vh" }}>
-          <h4>
-            There is currently no pokemons here.{" "}
-            <span tag={Link} to="/">
-              Go and catch
-            </span>{" "}
-            some.
-          </h4>
+        <div>
+          <NoPokemon isDark={isDark} />
         </div>
       ) : (
         <Row className="d-flex flex-wrap">

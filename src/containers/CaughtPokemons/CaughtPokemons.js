@@ -6,7 +6,6 @@ export default function CaughtPokemons() {
   return (
     <div>
       <Container>
-        <h1>Caught Pokemons</h1>
         <Caught />
       </Container>
     </div>

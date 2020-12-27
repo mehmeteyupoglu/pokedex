@@ -32,3 +32,24 @@ export const changeTheme = (content) => {
     payload: content,
   };
 };
+
+export const setId = (content) => {
+  return {
+    type: "SET_ID",
+    payload: content,
+  };
+};
+
+export const setNotification = (content) => {
+  return {
+    type: "SET_NOTIFICATION",
+    payload: content,
+  };
+};
+
+export const setModal = (content) => {
+  return {
+    type: "SET_MODAL",
+    payload: content,
+  };
+};

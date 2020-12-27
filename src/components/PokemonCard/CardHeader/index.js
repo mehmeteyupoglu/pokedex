@@ -3,7 +3,7 @@ import { CardBody, Alert } from "reactstrap";
 import poke from "../../../assets/pokemon.png";
 import { headerStyle } from "./style";
 
-const checkDarkState = require("../../utils");
+const { checkDarkState } = require("../../utils");
 
 export default function CardHeader({ item, isDark }) {
   return (

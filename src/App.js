@@ -9,7 +9,7 @@ import Footer from "../src/components/Footer";
 import Home from "./containers/Home";
 import CaughtPokemons from "./containers/CaughtPokemons/CaughtPokemons";
 import { app, appDark } from "./appStyle";
-const checkDarkState = require("../src/components/utils");
+const { checkDarkState } = require("../src/components/utils");
 
 function App() {
   const isDark = useSelector((state) => state.appReducer.isDark);

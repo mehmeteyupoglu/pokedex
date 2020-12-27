@@ -1,5 +1,5 @@
 import React from "react";
-import { renderAbilities } from "../../../helper/pokemonFunctions";
+import { renderAbilities } from "../../utils";
 import { textStyle } from "./style";
 
 export default function CardText({ item }) {

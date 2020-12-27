@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
-const checkDarkState = require("../../utils");
+const { checkDarkState } = require("../../utils");
 
 export default function DarkModeButton({ isDark }) {
   const dispatch = useDispatch();

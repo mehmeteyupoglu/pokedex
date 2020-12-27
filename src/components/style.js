@@ -24,54 +24,6 @@ export const darkCardStyle = {
   border: `1px solid ${colors.gray}`,
 };
 
-//NAVBAR
-export const navbar = {
-  boxShadow: `1px 3px 10px ${colors.gray}`,
-  marginBottom: "3rem",
-};
-
-export const darkNavbar = {
-  borderBottom: `1px solid ${colors.gray}`,
-  backgroundColor: colors.cardDBg,
-  marginBottom: "3rem",
-};
-
-//FOOTER
-export const footer = {
-  height: "15rem",
-  boxShadow: `1px 3px 10px ${colors.gray}`,
-  marginTop: "3rem",
-};
-
-export const darkFooter = {
-  height: "15rem",
-  borderTop: `1px solid ${colors.gray}`,
-  backgroundColor: colors.cardDBg,
-  marginTop: "3rem",
-};
-
-//MODAL
-export const darkModalHeader = {
-  backgroundColor: "rgb(25 31 41)",
-  color: colors.cardText,
-
-  borderBottom: "1px solid #f0f6fc ",
-};
-
-export const modalBody = {
-  display: "flex",
-  alignItems: "center",
-  fontSize: "0.75rem",
-};
-
-export const darkModalBody = {
-  display: "flex",
-  alignItems: "center",
-  fontSize: "0.75rem",
-  backgroundColor: colors.cardDBg,
-  color: colors.cardText,
-};
-
 //MISC.
 export const styledButton = {
   color: "#28a745",

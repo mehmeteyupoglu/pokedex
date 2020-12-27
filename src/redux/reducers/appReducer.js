@@ -2,6 +2,9 @@
 
 const initialState = {
   isDark: false,
+  itemId: null,
+  notification: false,
+  modal: false,
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -10,6 +13,21 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         isDark: !state.isDark,
+      };
+    case "SET_ID":
+      return {
+        ...state,
+        itemId: action.payload,
+      };
+    case "SET_NOTIFICATION":
+      return {
+        ...state,
+        notification: !state.notification,
+      };
+    case "SET_MODAL":
+      return {
+        ...state,
+        modal: !state.modal,
       };
     default:
       return state;

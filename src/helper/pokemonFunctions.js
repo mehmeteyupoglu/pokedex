@@ -28,40 +28,6 @@ export function filterPokemons(id, pokemons) {
 }
 
 // Renders types, abiilities, moves of pokemons and list them
-export const renderAbilities = (arr, index) => {
-  if (arr.length > 0) {
-    let abilities = arr.map((item) => {
-      return item.ability.name;
-    });
-
-    return abilities.join(", ");
-  }
-  return null;
-};
-
-export const renderTypes = (arr, index) => {
-  if (arr.length) {
-    let types = arr.map((item) => {
-      return item.type.name;
-    });
-
-    return types.join(", ");
-  }
-
-  return null;
-};
-
-export const renderMoves = (arr, index) => {
-  if (arr.length) {
-    let moves = arr.map((item) => {
-      return item.move.name;
-    });
-
-    return moves.join(", ");
-  }
-
-  return null;
-};
 
 export const check = (id, pokemonStore) => {
   var found = false;
