@@ -22,5 +22,9 @@ export const darkCardStyle = {
 };
 
 export const cardBottomStyle = {
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
   padding: "0 1.25rem 1.25rem",
 };

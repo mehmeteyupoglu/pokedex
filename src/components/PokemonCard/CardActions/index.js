@@ -52,32 +52,30 @@ export default function CardActions({ item, catchAndRelease }) {
     return result ? true : false;
   };
   return (
-    <div>
-      <div style={cardActionStyle}>
-        <Button
-          color="danger mb-10"
-          size="sm"
-          onClick={() => {
-            setId(item);
-            setModal();
-          }}
-        >
-          Pokédex
-        </Button>
-        {/* Update redux when the pokemon catched. dex record is set in redux */}
-        <Button
-          id={item.id}
-          color={catchAndRelease.catch.color}
-          size="sm"
-          onClick={() => {
-            handleClick(item);
-            showNotification();
-          }}
-          disabled={disableButton(item)}
-        >
-          Catch
-        </Button>
-      </div>
+    <div style={cardActionStyle}>
+      <Button
+        color="danger mb-10"
+        size="sm"
+        onClick={() => {
+          setId(item);
+          setModal();
+        }}
+      >
+        Pokédex
+      </Button>
+      {/* Update redux when the pokemon catched. dex record is set in redux */}
+      <Button
+        id={item.id}
+        color={catchAndRelease.catch.color}
+        size="sm"
+        onClick={() => {
+          handleClick(item);
+          showNotification();
+        }}
+        disabled={disableButton(item)}
+      >
+        Catch
+      </Button>
     </div>
   );
 }
