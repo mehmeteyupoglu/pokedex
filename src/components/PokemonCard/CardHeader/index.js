@@ -8,7 +8,6 @@ import { headerStyle, alertStyle } from "./style";
 const { checkDarkState } = require("../../utils");
 
 export default function CardHeader({ item, isDark }) {
-  console.log("item in card header", item);
   return (
     <div>
       <CardBody style={headerStyle}>
