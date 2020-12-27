@@ -7,15 +7,21 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 // Import local files
 import { catchAndRelease } from "../constants";
-import { cardStyle, darkCardStyle, styledButton } from "../style";
+import { styledButton } from "../style";
+import {
+  cardBottomStyle,
+  cardStyle,
+  darkCardStyle,
+} from "../PokemonCard/style";
 import { cardActionStyle } from "../PokemonCard/CardActions/style";
+import { colStyle } from "../PokemonCard/style";
 
 // Components
 import NoPokemon from "./NoPokemon";
 import CardHeader from "../PokemonCard/CardHeader";
-import CardSubheader from "../PokemonCard/CardSubheader";
 import CardImage from "../PokemonCard/CardImage";
 import CardText from "../PokemonCard/CardText";
+import { caughtStyle } from "./style";
 
 const { checkDarkState, renderAbilities } = require("../utils");
 
@@ -51,50 +57,45 @@ export default function Caught() {
     <Row className="d-flex flex-wrap">
       {pokemonStore.map((item, index) => {
         return (
-          <div key={index}>
-            <Col>
-              <Card style={checkDarkState(isDark, darkCardStyle, cardStyle)}>
-                <CardHeader item={item} isDark={isDark} />
-                <CardSubheader item={item} />
+          <Col key={index} lg="4" md="6" style={colStyle}>
+            <Card style={checkDarkState(isDark, darkCardStyle, cardStyle)}>
+              <CardHeader item={item} isDark={isDark} />
 
-                <CardImage item={item.img} isDark={isDark} />
-                <CardBody tag="h6">
-                  <CardText item={item} />
+              <CardImage item={item.img} isDark={isDark} />
 
-                  <div style={cardActionStyle}>
-                    {/* Update redux when the pokemon released */}
-                    <Button
-                      color={catchAndRelease.release.color}
-                      size="sm"
-                      onClick={() =>
-                        handleClick(item, catchAndRelease.release.type)
-                      }
-                    >
-                      {catchAndRelease.release.text}
-                    </Button>
+              <div style={cardBottomStyle}>
+                <CardText item={item} />
 
-                    {/* Update redux when the pokemon is marked/unmarked as favorite */}
-                    <div
-                      style={styledButton}
-                      onClick={() => handleToggle(item)}
-                    >
-                      <FontAwesomeIcon
-                        icon={faStar}
-                        color={checkFavorite(item)}
-                      />
-                    </div>
+                <div style={cardActionStyle}>
+                  {/* Update redux when the pokemon released */}
+                  <Button
+                    color={catchAndRelease.release.color}
+                    size="sm"
+                    onClick={() =>
+                      handleClick(item, catchAndRelease.release.type)
+                    }
+                  >
+                    {catchAndRelease.release.text}
+                  </Button>
+
+                  {/* Update redux when the pokemon is marked/unmarked as favorite */}
+                  <div style={styledButton} onClick={() => handleToggle(item)}>
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      color={checkFavorite(item)}
+                    />
                   </div>
-                </CardBody>
-              </Card>
-            </Col>
-          </div>
+                </div>
+              </div>
+            </Card>
+          </Col>
         );
       })}
     </Row>
   );
 
   return (
-    <div>
+    <div style={caughtStyle}>
       <h1>Caught Pokemons</h1>
       <hr color={checkDarkState(isDark, "#505863", null)} />
 

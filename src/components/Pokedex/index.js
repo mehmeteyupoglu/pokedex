@@ -5,16 +5,20 @@ import { Card, CardBody, Container, Row, Col } from "reactstrap";
 
 //Local Files
 import { catchAndRelease } from "../constants";
-import { cardStyle, darkCardStyle } from "../style";
+import {
+  cardBottomStyle,
+  cardStyle,
+  darkCardStyle,
+} from "../PokemonCard/style";
 
 //Components
 import CardHeader from "../PokemonCard/CardHeader";
-import CardSubheader from "../PokemonCard/CardSubheader";
 import CardImage from "../PokemonCard/CardImage";
 import CardText from "../PokemonCard/CardText";
 import CardActions from "../PokemonCard/CardActions";
 import Notification from "../Notification";
 import ModalComponent from "../ModalComponent";
+import { colStyle } from "../PokemonCard/style";
 
 const { checkDarkState } = require("../utils");
 
@@ -29,28 +33,20 @@ function Pokedex({ props, pokemonData }) {
         <Row className="d-flex flex-wrap">
           {pokemonData.map((item, index) => {
             return (
-              <div key={index}>
-                <Col>
-                  <Card
-                    style={checkDarkState(isDark, darkCardStyle, cardStyle)}
-                  >
-                    <CardHeader item={item} isDark={isDark} />
-                    <CardSubheader item={item} />
+              <Col key={index} lg="4" md="6" style={colStyle}>
+                <Card style={checkDarkState(isDark, darkCardStyle, cardStyle)}>
+                  <CardHeader item={item} isDark={isDark} />
 
-                    <CardImage
-                      item={item.sprites.front_default}
-                      isDark={isDark}
+                  <CardImage item={item.sprites.front_default} />
+                  <div style={cardBottomStyle}>
+                    <CardText item={item} />
+                    <CardActions
+                      item={item}
+                      catchAndRelease={catchAndRelease}
                     />
-                    <CardBody tag="h6">
-                      <CardText item={item} />
-                      <CardActions
-                        item={item}
-                        catchAndRelease={catchAndRelease}
-                      />
-                    </CardBody>
-                  </Card>
-                </Col>
-              </div>
+                  </div>
+                </Card>
+              </Col>
             );
           })}
         </Row>

@@ -45,7 +45,10 @@ export default function Home(props) {
   if (loading) {
     return (
       <div>
-        <Container style={styledContainer}>
+        <Container
+          style={styledContainer}
+          className="d-flex align-items-center justify-content-center"
+        >
           <Row>
             <Col>
               <Spinner style={spinnerStyle} type="grow" color="danger" />

@@ -1,15 +1,15 @@
 import React from "react";
 import { imgContainerStyle, imgStyle } from "./style";
 
-export default function CardImage({ item, isDark }) {
+export default function CardImage({ item }) {
   return (
     <div style={imgContainerStyle}>
       <img
         width="60%"
         src={item}
-        alt={`Pokemon: ${item.name}`}
+        alt={`Pokemon: ${item}`}
         className="rounded"
-        style={imgStyle(isDark)}
+        style={imgStyle}
       />
     </div>
   );
