@@ -13,7 +13,7 @@ const renderAbilities = (arr) => {
   return null;
 };
 
-const renderTypes = (arr, index) => {
+const renderTypes = (arr) => {
   if (arr.length) {
     let types = arr.map((item) => {
       return item.type.name;
@@ -25,7 +25,7 @@ const renderTypes = (arr, index) => {
   return null;
 };
 
-const renderMoves = (arr, index) => {
+const renderMoves = (arr) => {
   if (arr.length) {
     let moves = arr.map((item) => {
       return item.move.name;
@@ -37,11 +37,12 @@ const renderMoves = (arr, index) => {
   return null;
 };
 
-const filterPokemons = (id, pokemons) => {
-  const filteredPokemons = pokemons.filter((item) => {
-    return item.id === id;
-  });
-};
+// const filterPokemons = (id, pokemons) => {
+//   const filteredPokemons = pokemons.filter((item) => {
+//     return item.id === id;
+//   });
+//   return filteredPokemons;
+// };
 
 const isPokemonCaught = (id, pokemonStore) => {
   var found = false;
@@ -60,6 +61,5 @@ module.exports = {
   renderAbilities,
   renderTypes,
   renderMoves,
-  filterPokemons,
   isPokemonCaught,
 };
