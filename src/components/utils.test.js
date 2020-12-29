@@ -81,36 +81,6 @@ test(" Renders moves from an array and returns a string separated with comas", (
   expect(renderMoves(emptyArr)).toBeNull();
 });
 
-// test(" Tests if the function filters only one pokemon from a list of pokemons ", () => {
-//   const itemId1 = 301;
-//   const itemId2 = 300;
-//   const itemId3 = undefined;
-//   const itemId4 = null;
-
-//   const pokemons = [
-//     {
-//       name: "delcatty",
-//       id: 301,
-//     },
-//     {
-//       name: "sableye",
-//       id: 302,
-//     },
-//   ];
-
-//   const filteredArr = [
-//     {
-//       name: "delcatty",
-//       id: 301,
-//     },
-//   ];
-
-//   expect(filterPokemons(itemId1, pokemons)).toStrictEqual(filteredArr);
-//   expect(filterPokemons(itemId2, pokemons)).toBeUndefined();
-//   expect(filterPokemons(itemId3, pokemons)).toBeUndefined();
-//   expect(filterPokemons(itemId4, pokemons)).toBeUndefined();
-// });
-
 test("Tests if the pokemon is caught by the user checking the store", () => {
   const pokemons = [
     {

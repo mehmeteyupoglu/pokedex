@@ -10,6 +10,6 @@ export const alertStyle = {
   border: "none",
   display: "flex",
   justifyContent: "space-between",
-  alignItems: "center",
+  alignItems: "flex-end",
   marginBottom: "0",
 };

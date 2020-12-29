@@ -4,13 +4,15 @@ import { Container, Spinner, Row, Col } from "reactstrap";
 
 //Local Files
 import Pokedex from "../../components/Pokedex";
-import {
-  getAllPokemon,
-  getIndividualPokemons,
-} from "../../helper/pokemonFunctions";
 import { spinnerStyle, styledContainer } from "./style";
 
+const {
+  getAllPokemon,
+  getIndividualPokemons,
+} = require("../../helper/pokemonFunctions");
+
 export default function Home(props) {
+  const [error, setError] = useState();
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(true);
   const number = 20;
@@ -21,11 +23,14 @@ export default function Home(props) {
     async function fetchData() {
       try {
         let response = await getAllPokemon(initialUrl);
+        // console.log("getAllPokemons ", response);
         let pokemon = await loadPokemon(response.results);
 
         setLoading(false);
       } catch (error) {
-        console.log("error", error);
+        setError(
+          "Error while retrieving data " + error + ". Please check your network"
+        );
       }
     }
     fetchData();
@@ -36,6 +41,7 @@ export default function Home(props) {
     let _pokemonData = await Promise.all(
       data.map(async (pokemon) => {
         let pokemonData = await getIndividualPokemons(pokemon.url);
+
         return pokemonData;
       })
     );
@@ -51,7 +57,12 @@ export default function Home(props) {
         >
           <Row>
             <Col>
-              <Spinner style={spinnerStyle} type="grow" color="danger" />
+              <Spinner
+                style={spinnerStyle}
+                type="grow"
+                color={error ? "danger" : "info"}
+              />
+              {error && <p>{error}</p>}
             </Col>
           </Row>
         </Container>
