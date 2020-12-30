@@ -4,7 +4,7 @@ const {
   renderTypes,
   renderMoves,
   isPokemonCaught,
-} = require("./utils");
+} = require("../components/utils");
 
 test(" checks if the state is dark", () => {
   let isDark = true;

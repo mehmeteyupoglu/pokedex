@@ -1,4 +1,7 @@
-const { getAllPokemon, getIndividualPokemons } = require("./pokemonFunctions");
+const {
+  getAllPokemon,
+  getIndividualPokemons,
+} = require("../helper/pokemonFunctions");
 
 test("Testing whether async getAllPokemon function retrieves data from api  ", () => {
   const number = 20;
