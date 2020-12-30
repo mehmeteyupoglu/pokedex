@@ -23,7 +23,6 @@ export default function Home(props) {
     async function fetchData() {
       try {
         let response = await getAllPokemon(initialUrl);
-        // console.log("getAllPokemons ", response);
         let pokemon = await loadPokemon(response.results);
 
         setLoading(false);

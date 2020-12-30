@@ -16,11 +16,9 @@ async function getAllPokemon(url) {
 
 async function getIndividualPokemons(url) {
   return new Promise((resolve, reject) => {
-    console.log("url ", url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log("resolved in getIndividual ", data);
         resolve(data);
       })
       .catch((err) => {
