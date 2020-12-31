@@ -1,4 +1,5 @@
 //RETRIEVE DATA FROM THE API
+import "regenerator-runtime/runtime";
 const fetch = require("node-fetch");
 
 async function getAllPokemon(url) {
