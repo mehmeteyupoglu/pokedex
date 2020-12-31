@@ -14,12 +14,12 @@ import Weight from "./Weight";
 import Height from "./Height";
 import Moves from "./Moves";
 
-const {
+import {
   checkDarkState,
   renderAbilities,
   renderTypes,
   renderMoves,
-} = require("../../utils");
+} from "../../utils";
 
 export default function ModalBodyContainer({ pokemon, isDark }) {
   return (

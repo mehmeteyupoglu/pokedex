@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Alert } from "reactstrap";
 import { styledNotification } from "./style";
 
-const { checkDarkState } = require("../utils");
+import { checkDarkState } from "../utils";
 
 export default function Notification({ notification, isDark }) {
   return (

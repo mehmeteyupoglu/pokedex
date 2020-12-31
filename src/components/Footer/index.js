@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { footer, darkFooter } from "./style";
 import FooterLeft from "./FooterLeft";
 
-const { checkDarkState } = require("../utils");
+import { checkDarkState } from "../utils";
 
 export default function Footer() {
   const isDark = useSelector((state) => state.appReducer.isDark);

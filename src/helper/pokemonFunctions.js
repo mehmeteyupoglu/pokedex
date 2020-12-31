@@ -1,8 +1,6 @@
 //RETRIEVE DATA FROM THE API
-import "regenerator-runtime/runtime";
-const fetch = require("node-fetch");
 
-async function getAllPokemon(url) {
+export async function getAllPokemon(url) {
   return new Promise((resolve, reject) => {
     fetch(url)
       .then((res) => res.json())
@@ -15,7 +13,7 @@ async function getAllPokemon(url) {
   });
 }
 
-async function getIndividualPokemons(url) {
+export async function getIndividualPokemons(url) {
   return new Promise((resolve, reject) => {
     fetch(url)
       .then((res) => res.json())
@@ -27,8 +25,3 @@ async function getIndividualPokemons(url) {
       });
   });
 }
-
-module.exports = {
-  getIndividualPokemons,
-  getAllPokemon,
-};

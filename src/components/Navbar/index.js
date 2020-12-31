@@ -10,7 +10,7 @@ import NavbarButton from "./NavbarButton";
 import DarkModeButton from "./DarkModeButton";
 import Brand from "./Brand";
 
-const { checkDarkState } = require("../utils");
+import { checkDarkState } from "../utils";
 
 export default function CustomNavbar() {
   const isDark = useSelector((state) => state.appReducer.isDark);

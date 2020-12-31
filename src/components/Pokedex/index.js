@@ -20,7 +20,7 @@ import Notification from "../Notification";
 import ModalComponent from "../ModalComponent";
 import { colStyle } from "../PokemonCard/style";
 
-const { checkDarkState } = require("../utils");
+import { checkDarkState } from "../utils";
 
 function Pokedex({ props, pokemonData }) {
   const appReducer = useSelector((state) => state.appReducer);

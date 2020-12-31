@@ -23,7 +23,7 @@ import CardImage from "../PokemonCard/CardImage";
 import CardText from "../PokemonCard/CardText";
 import { caughtStyle } from "./style";
 
-const { checkDarkState, renderAbilities } = require("../utils");
+import { checkDarkState, renderAbilities } from "../utils";
 
 export default function Caught() {
   //Reach data from Redux

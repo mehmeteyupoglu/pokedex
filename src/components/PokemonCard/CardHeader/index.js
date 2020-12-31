@@ -5,7 +5,7 @@ import { CardBody, Alert, CardSubtitle } from "reactstrap";
 //Local Files
 import poke from "../../../assets/pokemon.png";
 import { headerStyle, alertStyle } from "./style";
-const { checkDarkState } = require("../../utils");
+import { checkDarkState } from "../../utils";
 
 export default function CardHeader({ item, isDark }) {
   return (

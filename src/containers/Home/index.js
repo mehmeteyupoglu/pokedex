@@ -6,10 +6,10 @@ import { Container, Spinner, Row, Col } from "reactstrap";
 import Pokedex from "../../components/Pokedex";
 import { spinnerStyle, styledContainer } from "./style";
 
-const {
+import {
   getAllPokemon,
   getIndividualPokemons,
-} = require("../../helper/pokemonFunctions");
+} from "../../helper/pokemonFunctions";
 
 export default function Home(props) {
   const [error, setError] = useState();

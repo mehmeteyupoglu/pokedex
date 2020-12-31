@@ -6,7 +6,7 @@ import { Button } from "reactstrap";
 //Local Files
 import { cardActionStyle } from "./style";
 
-const { isPokemonCaught } = require("../../utils");
+import { isPokemonCaught } from "../../utils";
 
 export default function CardActions({ item, catchAndRelease }) {
   const pokemonStore = useSelector((state) => state.pokemonReducer);

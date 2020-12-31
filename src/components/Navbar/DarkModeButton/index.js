@@ -8,7 +8,7 @@ import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 //Local Files
 import { darkModeStyle } from "./style";
 //Components
-const { checkDarkState } = require("../../utils");
+import { checkDarkState } from "../../utils";
 
 export default function DarkModeButton({ isDark }) {
   const dispatch = useDispatch();
